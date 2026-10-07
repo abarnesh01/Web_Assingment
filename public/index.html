@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10151b"><title>Relay — Team chat</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <main id="auth-screen" class="auth-screen">
+    <section class="auth-card">
+      <div class="brand-lockup"><span class="brand-mark">R</span><span>relay<span class="brand-dot">.</span></span></div>
+      <p class="eyebrow">TEAM MESSAGING / LIVE</p><h1>Good work<br>happens <em>together.</em></h1>
+      <p class="auth-copy">A clear channel for the work in motion.</p>
+      <form id="auth-form">
+        <label>Username<input id="username" name="username" minlength="3" maxlength="24" placeholder="e.g. alex_r" autocomplete="username" required></label>
+        <label>Password<input id="password" name="password" type="password" minlength="8" placeholder="At least 8 characters" autocomplete="current-password" required></label>
+        <p id="auth-error" class="error" role="alert"></p>
+        <button id="auth-submit" class="primary-button" type="submit">Sign in <span>↗</span></button>
+      </form>
+      <p class="auth-switch"><span id="auth-switch-copy">New to Relay?</span> <button id="auth-switch" type="button">Create account</button></p>
+      <p class="auth-foot">Your team, in sync <span>●</span></p>
+    </section>
+    <aside class="auth-art"><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="art-center">R<span>↗</span></div><div class="floating-note note-one"># build-in-public <i>●</i></div><div class="floating-note note-two">ship it when it feels right <small>now</small></div><div class="art-caption">A little less noise.<br>A lot more momentum.</div></aside>
+  </main>
+  <main id="app-screen" class="app-shell hidden">
+    <aside class="sidebar">
+      <div class="side-brand"><span class="brand-mark">R</span><span>relay<span class="brand-dot">.</span></span><button id="new-room" class="icon-button" title="Create room">＋</button></div>
+      <div class="workspace-label"><span class="workspace-icon">N</span><span><b>Northstar Studio</b><small>Free workspace</small></span><span class="chevron">⌄</span></div>
+      <div class="section-heading"><span>CHANNELS</span><button id="new-room-small" class="icon-button" title="Create room">＋</button></div>
+      <nav id="room-list" class="room-list"></nav>
+      <div class="sidebar-bottom"><div class="online-label"><span class="pulse-dot"></span> LIVE CONNECTION</div><div class="profile"><span id="avatar" class="avatar">A</span><span class="profile-name"><b id="profile-username">Member</b><small>Active now</small></span><button id="logout" class="icon-button" title="Sign out">↗</button></div></div>
+    </aside>
+    <section class="conversation">
+      <header class="topbar"><div><div class="crumb">Northstar Studio <span>/</span> <b id="room-title"># general</b></div><div id="room-description" class="room-description">The shared team room</div></div><div class="topbar-right"><span class="live-pill"><span></span> LIVE</span><span class="member-count">◉ <b id="member-count">1</b> here</span><button class="icon-button more-button" title="More options">···</button></div></header>
+      <div class="date-divider"><span>MESSAGES</span><i></i><small>Recent first, stay in the loop</small></div>
+      <div id="messages" class="messages" aria-live="polite"></div>
+      <div id="typing-indicator" class="typing-indicator"></div>
+      <form id="message-form" class="composer"><div class="composer-tools"><button type="button" title="Formatting">Aa</button><button type="button" title="Add attachment">＋</button></div><textarea id="message-input" rows="1" maxlength="2000" placeholder="Message #general… (Enter to send)" aria-label="Message"></textarea><div class="composer-footer"><span>Keep it kind. Keep it moving.</span><button id="send-button" type="submit" aria-label="Send message">↑</button></div></form>
+    </section>
+    <aside class="right-rail"><div class="rail-kicker">YOUR SPACE <button class="icon-button">···</button></div><section class="rail-card"><div class="rail-card-title"><span class="rail-icon mint">↗</span><b>Room pulse</b></div><p>Good things are happening here.</p><div class="pulse-chart"><span style="height:27%"></span><span style="height:42%"></span><span style="height:36%"></span><span style="height:64%"></span><span style="height:51%"></span><span style="height:83%"></span><span style="height:68%"></span><span style="height:100%"></span><span style="height:78%"></span><span style="height:92%"></span><span style="height:66%"></span><span style="height:88%"></span></div><div class="chart-labels"><span>9 AM</span><span>NOW</span></div></section><section class="rail-card room-about"><div class="rail-card-title"><span class="rail-icon amber">#</span><b>About this room</b></div><p id="rail-room-description">The shared team room</p><div class="rail-meta"><span>CREATED BY</span><b>Northstar Studio</b></div><div class="rail-meta"><span>VISIBILITY</span><b><i class="lock-icon">◉</i> Workspace-wide</b></div></section><div class="rail-tip"><span>✳</span><p><b>Small tip</b><br>Use <kbd>Enter</kbd> to send and <kbd>Shift + Enter</kbd> for a new line.</p></div><div class="rail-footer">RELAY WORKSPACE <span>v1.0</span></div></aside>
+  </main>
+  <div id="toast" class="toast" role="status"></div>
+  <script src="/socket.io/socket.io.js"></script><script src="/app.js"></script>
+</body>
+</html>

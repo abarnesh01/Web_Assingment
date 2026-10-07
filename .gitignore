@@ -1,0 +1,6 @@
+node_modules/
+.env
+relay.sqlite
+relay.sqlite-shm
+relay.sqlite-wal
+.DS_Store
